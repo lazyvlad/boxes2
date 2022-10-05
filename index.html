@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Boxer App</title>
+  </head>
+  <body>
+    <div id="notification"></div>
+    <div id="app">
+      <div class="info">
+          <h1>Box Game</h1>
+          <details open>
+            <summary>Prerequisite</summary>
+            <p class="normal">This projects needs to be built with javascript. ES6 is fine. Any cutting edge addition to the javascript language that you want to use is accepted. We only care if it works in latest Chrome/Firefox build.</p>
+          </details>
+          <details open>
+            <summary>Goal 1</summary>
+            <p class="normal">The goal is to dynamically create a grid of X*Y tile elements that can be clicked. When clicked the element changes color from white to green. </p>
+            <p class="normal">The grid needs to be constrained to x (rows &lt; 200) and y (columns &lt; 40).</p>
+          </details>
+          <details open>
+            <summary>Goal 2</summary>
+            <p class="normal">A green element is a selected element.</p>
+            <p class="normal"><strong>When all elements are selected a process of deselecting every tile begins. The direction of the "deselection" is dependant on the FIFO (first in first out) or FILO(first in last out) selector</strong>.</p>
+          </details>
+          <details open>
+            <p class="normal">
+              Quality of life improvements:
+              <ul>
+                <li>The delay at which they are "deselected" is in <em>ms</em> and is dependant on the delay field.</li>
+                <li>If a user has focus in one of the grid inputs, they can press enter and <strong>DRAW</strong> will be activated</li>
+                <li>Boxes can be changed into circles, on the fly!</li>
+                <li>Show a notification when certain events occur (drawing grid, emptying selected items, faulty input ... )</li>
+                <li>Button to manually unload the items</li>
+              </ul>
+            </p>
+            <summary>Goal 3</summary>
+          </details>   
+          
+          <details>
+            <summary>Future Goals</summary>
+            <ul>
+              <li class="normal">Save the selection in a session cookie</li>
+              <li class="normal">Save the selection in a localStorage</li>
+              <li class="normal">Add color palette, ability to select a color</li>
+              <li class="normal">Add a random color generator for the tiles, color them randomly</li>
+
+            </ul>
+          </details>
+          
+      </div>
+      <div id="controls">
+        <div class="control">
+          <label for="direction">direction:</label>
+          <select name="direction">
+            <option value="FIFO" selected>First In - First Out</option>
+            <option value="FILO">First In - Last Out</option>
+          </select>
+        </div>
+        <div class="control">
+          <label for="tile-form">tile form:</label>
+          <select name="tile-form">
+            <option value="square" selected>Square</option>
+            <option value="circle">Circle</option>
+          </select>
+        </div>        
+        <div class="control">
+          <label for="delay">delay:</label>
+          <input name="delay" type="number" value="500" placeholder="Input the delay of disappearance">
+        </div>
+        <div class="control">
+          <label for="">grid:</label>
+            <div class="multiple-controls">
+              <div class="control relative">
+                <input name="rows" type = "number" placeholder="number of rows" value="4" pattern="\d*" max="80" required> 
+                <span>Drop me something between 0 and 81</span>
+              </div>
+              <div class="control relative">
+                <input name="columns" type = "number" placeholder="number of columns" value="4" max="8" required>
+                <span>Feed me something between 0 and 9</span>
+              </div>
+              <div class="control">
+                <button name="new-grid-btn">Draw!</button>
+              </div>
+            </div>
+        </div>
+        <div class="control">
+          <button name="unload-now">Unload Now!</button>
+        </div>
+      </div>
+      <div id="grid-wrapper">
+        <div id="grid" class="grid">
+        </div>
+      </div>
+     
+    </div>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
