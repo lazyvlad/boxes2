@@ -23,10 +23,10 @@ The delay at which they are "deselected" is in ms and is dependant on the delay 
 ### Goal 4
 Quality of life improvements:
 
-If a user has focus in one of the grid inputs, they can press enter and DRAW will be activated
-Boxes can be changed into circles, on the fly!
-Show a notification when certain events occur (drawing grid, emptying selected items, faulty input ... )
-Button to manually unload the items
+- If a user has focus in one of the grid inputs, they can press enter and DRAW will be activated
+- Boxes can be changed into circles, on the fly!
+- Show a notification when certain events occur (drawing grid, emptying selected items, faulty input ... )
+- Button to manually unload the items
 
 ## Installation
 Clone this and then do 
