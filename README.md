@@ -1,6 +1,11 @@
 # boxes2
 
 ## Goals
+
+Do it in pure javascript. Do not use jQuery, Underscore and such.
+
+Maintain project with vite.
+
 The goal is to dynamically create a grid of X*Y tile elements that can be clicked. When clicked the element changes color from white to green.
 
 The grid needs to be constrained to x (rows < 200) and y (columns < 8).
