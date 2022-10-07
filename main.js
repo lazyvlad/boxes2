@@ -139,7 +139,8 @@ const doUnload = (selectedList,direction='FIFO',delay=500) => {
 
 $grid.addEventListener('click',(event) => {
 
-  let totalTiles = document.querySelectorAll('.tile').length;
+  let totalTiles = $grid.querySelectorAll(':scope .tile').length;
+
 
   if(event.target && event.target.classList.contains('tile')){
       if(disableClick) {
@@ -151,12 +152,16 @@ $grid.addEventListener('click',(event) => {
         event.target.classList.add('selected');
         selectedTiles.push(event.target)
 
+      
       if (selectedTiles.length === totalTiles) {
         //TODO start unloading
         disableClick = true;
 
+
+
         let direction = document.querySelector('[name="direction"]').value;
         let delay = document.querySelector('[name="delay"]').value;
+        
         doUnload(selectedTiles,direction,delay)
       }
 
