@@ -1,6 +1,8 @@
 import './style.css'
 // import javascriptLogo from './javascript.svg'
-// import { setupCounter } from './counter.js'
+import { qss,qsa } from './helpers/qol.js'
+
+import Flipper from './flip.js'
 
 
 
@@ -280,3 +282,83 @@ let rows = document.querySelector('[name="rows"]').value;
 let columns = document.querySelector('[name="columns"]').value;
 
 setupGrid(rows,columns);
+
+
+let $difficulty = document.querySelector('#difficulty');
+let $tile_form = document.querySelector('#box2-tile-form');
+let difficulty = $difficulty.value
+let tile_form = $tile_form.value;
+
+let flipper = new Flipper(document.querySelector('#flipper-grid'),{difficulty:difficulty,tile_form:tile_form,player_name:'Prince Charles'});
+
+$tile_form.addEventListener('change',(event)=>{
+  flipper.changeTileForm(event.target.value);
+  flipper.restartGame();
+})
+
+$difficulty.addEventListener('change',(event)=>{ 
+
+  flipper.changeDifficulty(event.target.value);
+  flipper.restartGame();
+
+})
+
+
+/**Dialog stuff */
+qss('#set-player-name').addEventListener('click', (event)=>{
+
+  if (typeof qss('#name-dialog').showModal === "function") {
+    qss('#name-dialog').showModal();
+  } else {
+    qss('output').value = "Sorry, the <dialog> API is not supported by this browser.";
+  }
+
+});
+
+
+qss('#player-name').addEventListener('change', (e) => {
+  qss('#set-player-name').value = e.target.value;
+});
+
+
+qss('#cancel-button').addEventListener('click', (event) => {
+
+  qss('#set-player-name').value = '';
+  event.target.value = 'true';
+});
+
+qss('#confirm-button').addEventListener('click', (event) => {
+  qss('#cancel-button').value = 'false';
+
+});
+
+qss('#name-dialog').addEventListener('cancel', (event) => {
+  qss('#cancel-button').value = 'true';
+})
+
+qss('#name-dialog').addEventListener('close', (event) => {
+
+  if(qss('#cancel-button').value == 'true'){
+    qss('output').value = `cancelled. Player name is still ${flipper.getPlayerName()}`;
+  }
+  else if(qss('#cancel-button').value == 'false'){
+
+    console.log(`%c player name ${qss('#set-player-name').value}`,'background:black;color:white')
+
+    flipper.setPlayerName(qss('#set-player-name').value)
+    // qss('output').value = `${flipper.getPlayerName()} was set as a player  on - ${(new Date()).toString()}`;
+    qss('output').value = `${flipper.getPlayerName()} was set as a player.`;
+
+  }
+
+});
+/**oh boy this is long */
+//TODO make this as a class that can be included anywhere
+
+
+
+
+
+console.log(flipper.params.size);
+
+console.log(flipper.getSelectedTiles())

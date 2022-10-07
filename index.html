@@ -37,8 +37,7 @@
               </ul>
             </p>
             <summary>Goal 3</summary>
-          </details>   
-          
+          </details>
           <details>
             <summary>Future Goals</summary>
             <ul>
@@ -46,12 +45,10 @@
               <li class="normal">Save the selection in a localStorage</li>
               <li class="normal">Add color palette, ability to select a color</li>
               <li class="normal">Add a random color generator for the tiles, color them randomly</li>
-
             </ul>
-          </details>
-          
+          </details>          
       </div>
-      <div id="controls">
+      <div id="controls" class="controls">
         <div class="control">
           <label for="direction">direction:</label>
           <select name="direction">
@@ -94,7 +91,63 @@
         <div id="grid" class="grid">
         </div>
       </div>
-     
+
+
+      <div class="new-game">
+        <div class="controls">
+          <div class="control">
+            <button name="restart-game" id="restart-game" class="shadowy-button">Restart</button>
+          </div>
+          <div class="control">
+            <label for="difficulty">difficulty:</label>
+            <select id="difficulty" name="difficulty">
+              <option value="easy" selected>Easy (4x4)</option>
+              <option value="hard">Hard (5X5)</option>
+              <option value="nightmare">Nightmare (6X6)</option>
+            </select>
+          </div>   
+          <div class="control">
+            <label for="box2-tile-form">tile form:</label>
+            <select id="box2-tile-form" name="box2-tile-form">
+              <option value="square" selected>Square</option>
+              <option value="circle">Circle</option>
+              <option value="rounded">Slightly rounded</option>
+            </select>
+          </div>                    
+        </div>
+        <div id="fliper-wrapper">
+          <h3>Flipper Game</h3>
+          <p>Turn all tiles to white!</p>
+          <div id="flipper-grid"></div>
+          <label>Moves</label>
+          <div id="moves">0</div>
+          <div id="fliper-results">
+            Winner
+          </div>
+          <dialog id="name-dialog">
+            <form method="dialog">
+              <p>
+                <label>Player name:
+                  <input type="text" id="player-name" name="player-name" placeholder="What is your name?" value="">
+                </label>
+              </p>
+              <div>
+                <button id="confirm-button" value="default">Confirm</button>
+                <button id="cancel-button" value="false">Cancel</button>
+              </div>
+            </form>
+          </dialog>
+          <p>
+            <button id="set-player-name">Set name</button>
+          </p>
+          <output></output>
+        </div>
+
+
+
+
+      </div>
+      
     </div>
     <script type="module" src="/main.js"></script>
   </body>

@@ -75,20 +75,37 @@ h1 {
     height: 100px;
     background-color: white;
     display: flex;
-    border:1px solid #1a1a1a;
+    border:1px solid #d5d5d5;
     place-items: center;
     justify-content: center;
-    transition: border-radius 1s;
+    transition: border-radius 1s, border-color 0.25s, background-color 0.5s ease-in;
 }
+/* #flipper-grid .tile{
+  transition: background-color 0.5s;
+} */
 
 .tile.circle{
   border-radius: 50%;
 }
+.tile.rounded{
+  border-radius: 2em;
+}
 
 .tile.selected{
   background-color: green;
+  border-color:#1f1f1f;
 }
-#controls{
+
+.new-game{
+  margin-block: 50px;
+  background-color: #efefef;
+  padding-bottom: 50px;
+  border-radius: 2em;
+}
+.shadowy-button{
+  box-shadow: 0px 0px 7px 3px #efefef;
+}
+.controls{
   display: flex;
   flex-direction: column;
   place-items: center;
@@ -108,10 +125,31 @@ h1 {
   margin-right: auto;
 }
 
-
-#grid-wrapper{
+.flipper-info,#fliper-results{
   display:flex;
   justify-content:center;
+}
+
+#fliper-results{
+  position: fixed;
+  bottom: 0px;
+  background: green;
+  color: #fff;
+  padding: 2em;
+  width: 100vw;  
+  transform: translate(0,400%);
+  transition: all 0.4s ease-in-out;
+}
+#fliper-results.shown{
+  transform: translate(0,0);
+}
+#grid-wrapper,#fliper-wrapper{
+  display:flex;
+  justify-content:center;
+}
+#fliper-wrapper{
+  flex-direction: column;
+  align-items: center;
 }
 .multiple-controls {
   display: flex;
@@ -176,7 +214,7 @@ input:invalid:focus + span{
 
 button {
   border-radius: 8px;
-  border: 1px solid transparent;
+  border: 1px solid #999;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
